@@ -1,5 +1,6 @@
 from pygame import *
 from time import time as timer
+from random import randint
 
 mixer.init()
 
@@ -112,6 +113,7 @@ enemis = sprite.Group()
 
 
 stage = 1
+curstage = stage
 monsterHP = 100
 
 clock = time.Clock()
@@ -121,9 +123,9 @@ while game:
     for i in event.get():
         if i.type == QUIT:
             game = False
-    if stage == 1:
-        for i in range(stages[1]["Basic"]):
-            enemyi = Enemy(enemysprite,0,0,2)
+    if stage != 0:
+        for i in range(stages[stage]["Basic"]):
+            enemyi = Enemy(enemysprite,randint(0,700),0,2)
             enemis.add(enemyi)
         stage = 0
     window.blit(bg,(0,0))
@@ -142,5 +144,8 @@ while game:
         if i.hp <= 0:
             i.kill()
             death.play()
+    if len(enemis) <= 0:
+        curstage += 1
+        stage = curstage
     if sprite.spritecollide(bleh,enemis,False):
         game = False
