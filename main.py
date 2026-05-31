@@ -18,10 +18,19 @@ bulsprite = transform.scale(image.load("мячик.jpg"),(15,15))
 
 stages = {
     1: {
-        "Basic": 1
+        "Basic" : 1
     },
     2: {
         "Basic" : 2
+    },
+    3: {
+        "Basic" : 2
+    },
+    4: {
+        "Basic" : 3
+    },
+    5: {
+        "Basic" : 3
     }
 }
 
